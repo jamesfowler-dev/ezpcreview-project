@@ -16,9 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from components import urls as components_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("components_urls")), # the app urls are loaded as the main urls
+    path('', include("components.urls")), # the app urls are loaded as the main urls
 ]   
