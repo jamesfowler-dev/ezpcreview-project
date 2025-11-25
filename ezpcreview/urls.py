@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from reviews.views import my_review
 
 urlpatterns = [
+    path('reviews/', my_review, name='review'),
     path('admin/', admin.site.urls),
     # the app urls are loaded as the main urls
     path('', include("components.urls")),

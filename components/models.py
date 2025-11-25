@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Components(models.Model):
@@ -22,6 +23,7 @@ class Components(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     description = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta: 
         ordering = ["-created_on"]
