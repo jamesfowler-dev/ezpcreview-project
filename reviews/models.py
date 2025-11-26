@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from components.models import Components
+from components.models import Component
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
+
+
 class Review(models.Model):
     """
     Stores a single Review entry related to :model:`auth.User`.
@@ -11,7 +13,7 @@ class Review(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     component = models.ForeignKey(
-        Components, on_delete=models.CASCADE, related_name="reviews"
+        Component, on_delete=models.CASCADE, related_name="reviews"
     )
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="reviews"
@@ -27,10 +29,8 @@ class Review(models.Model):
         ordering = ["-created_on"]
     
     def __str__(self):
-        return f"Review by {self.author.username} | written by {self.component.name}"
+        return f"{self.title} | {self.component.name}"
     
-
-
 
 class Comment(models.Model):
     """
@@ -52,4 +52,4 @@ class Comment(models.Model):
         ordering = ["created_on"]
     
     def __str__(self):
-        return f"Comment {self.content} by {self.author}"
+        return f"Comment by {self.author.username}: {self.content[:30]}"

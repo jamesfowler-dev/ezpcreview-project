@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Components
+from .models import Component
 
 # Register your models here.
-admin.site.register(Components)
+admin.site.register(Component)

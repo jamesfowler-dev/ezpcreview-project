@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
-class Components(models.Model):
+class Component(models.Model):
 
     CATEGORY_CHOICES = [
         ('CPU', 'CPU'),
